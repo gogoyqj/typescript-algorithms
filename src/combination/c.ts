@@ -1,12 +1,6 @@
-// f(n) = n * (n - 1) * (n - 2) * ... * 1
-function combinationA(numbers: number[]): number[][] {
-    const combinations: number[][] = [];
-    for (let i = 0; i < numbers.length; i++) {
-
-    }
-    return combinations;
-}
-
+/**
+ * @description 排列组合，顺序无关，使用二进制
+ */
 function combinationC(numbers: number[]) {
     let max = (2 << numbers.length - 1) - 1;
     const combinations: number[][] = [];
