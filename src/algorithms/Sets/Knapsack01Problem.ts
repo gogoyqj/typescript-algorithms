@@ -1,4 +1,5 @@
-function pack01(w: number[], v: number[], W: number): number[] {
+// 0/1 背包问题
+function Knapsack01(w: number[], v: number[], W: number): number[] {
     const dp: number[] = [0];
     for (let i = 1; i <= w.length; i++) {
         for (let j = W; j >= w[i]; j--) {
@@ -9,6 +10,6 @@ function pack01(w: number[], v: number[], W: number): number[] {
     }
     return dp;
 }
-console.log('size', pack01([0, 1, 2, 3, 4, 5, 6], [0, 6, 5, 4, 3, 2, 1], 10));
-console.log('size', pack01([0, 1, 2, 3, 4, 5, 6], [0, 6, 5, 4, 3, 2, 1], 1));
+console.log('size', Knapsack01([0, 1, 2, 3, 4, 5, 6], [0, 6, 5, 4, 3, 2, 1], 10));
+console.log('size', Knapsack01([0, 1, 2, 3, 4, 5, 6], [0, 6, 5, 4, 3, 2, 1], 1));
 export {}

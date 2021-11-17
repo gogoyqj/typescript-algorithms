@@ -3,7 +3,7 @@
 // 硬币个数 => 无限制
 // total => total weight
 // 价值最小
-function changeCoin(coins: number[], total: number) {
+function ChangeCoinProblem(coins: number[], total: number) {
     const dp: number[] = [];
     dp[0] = 0;
     for (let i = 1; i <= coins.length; i++) {
@@ -16,6 +16,6 @@ function changeCoin(coins: number[], total: number) {
     return dp[total] === Infinity ? -1 : dp[total];
 }
 
-console.log(changeCoin([0, 1, 4, 5], 13));
-console.log(changeCoin([0, 1, 4, 5], 0));
-console.log(changeCoin([0, 2], 11));
+console.log(ChangeCoinProblem([0, 1, 4, 5], 13));
+console.log(ChangeCoinProblem([0, 1, 4, 5], 0));
+console.log(ChangeCoinProblem([0, 2], 11));

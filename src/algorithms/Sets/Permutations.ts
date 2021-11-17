@@ -1,14 +1,14 @@
 // 排列组合、顺序敏感
 // f(n) = a(n, n) + a(n, n - 1) + ... + a(n, 1) 
 // f(n) = n * (f(n - 1) + 1)
-function combinationA(numbers: number[]): number[][] {
+function PermutationsWithoutRepetition(numbers: number[]): number[][] {
   const combinations: number[][] = [];
   if (numbers.length === 0) return [];
   if (numbers.length === 1) return [numbers];
   for (let i = 0; i < numbers.length; i++) {
     const copy = [...numbers];
     combinations.push(copy.splice(i, 1));
-    const combinationsNMinuseOne = combinationA(copy);
+    const combinationsNMinuseOne = PermutationsWithoutRepetition(copy);
     combinationsNMinuseOne.forEach((ele) => {
       combinations.push([numbers[i], ...ele]);
     });
@@ -16,9 +16,9 @@ function combinationA(numbers: number[]): number[][] {
   return combinations;
 }
 
-console.log(combinationA([1, 2, 3]).length, FN(3), FN2(3));
-console.log(combinationA([1, 2, 3, 4]).length, FN(4), FN2(4));
-console.log(combinationA([1, 2, 3, 4, 5]).length, FN(5), FN2(5));
+console.log(PermutationsWithoutRepetition([1, 2, 3]).length, FN(3), FN2(3));
+console.log(PermutationsWithoutRepetition([1, 2, 3, 4]).length, FN(4), FN2(4));
+console.log(PermutationsWithoutRepetition([1, 2, 3, 4, 5]).length, FN(5), FN2(5));
 
 function CalA(n: number, m: number): number {
   if (m > n) throw Error(`${m} > ${n}`);
