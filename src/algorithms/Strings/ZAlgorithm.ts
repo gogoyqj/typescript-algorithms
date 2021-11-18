@@ -30,5 +30,20 @@ function ZAlgorithm(zString: string) {
   return zArray;
 }
 
-console.log(ZAlgorithm('123fg12fh123fg'));
-console.log(ZAlgorithm('1111111'))
+// console.log(ZAlgorithm('123fg12fh123fg'));
+// console.log(ZAlgorithm('1111111'))
+
+function ZAlgorithmSearch(text: string, word: string) {
+  const positions: number[] = [];
+  const zString = `${word}$${text}`;
+  const zArray = ZAlgorithm(zString);
+  return zArray.reduce((positions, z, index) => {
+    if (z === word.length) {
+      positions.push(index - word.length - 1)
+    }
+    return positions;
+  }, positions);
+}
+
+console.log(ZAlgorithmSearch('123fg12fh123fg', '123'));
+console.log(ZAlgorithmSearch('1111111', '111'));
