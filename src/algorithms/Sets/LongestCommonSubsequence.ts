@@ -1,3 +1,6 @@
+// LCS[a, b](i, j) = 0 if min(i, j) = 0
+//                 = LCS(i - 1, j - 1) + 1 if a[i - 1] === b[j - 1]
+//                 = max(LCS(i - 1, j), LCS(i, j - 1))
 export function LongestCommonSubsequence(a: string, b: string) {
   const matrix: number[][] = Array(b.length + 1).fill(null).map(() => Array(a.length + 1).fill(null));
   // init first row
@@ -21,21 +24,19 @@ export function LongestCommonSubsequence(a: string, b: string) {
       }
     }
   }
-  console.log(matrix.map(arr => arr.join(' ')).join('\n'))
   if (!matrix[b.length][a.length]) return [''];
-  let rowIndex = 1;
-  let columnIndex = 1;
+  let rowIndex = b.length;
+  let columnIndex = a.length;
   const Subsequence: string[] = [];
-  while (rowIndex < b.length || columnIndex < a.length) {
-    if (b[rowIndex + 1] === a[columnIndex + 1]) {
-      console.log(22, rowIndex, b[rowIndex + 1]);
-      Subsequence.push(b[rowIndex + 1]);
-      rowIndex++;
-      columnIndex++;
-    } else if (matrix[rowIndex][columnIndex] = matrix[rowIndex][columnIndex + 1] - 1) {
-      columnIndex++;
+  while (rowIndex > 0 || columnIndex > 0) {
+    if (b[rowIndex - 1] === a[columnIndex - 1]) {
+      Subsequence.unshift(b[rowIndex - 1]);
+      rowIndex--;
+      columnIndex--;
+    } else if (matrix[rowIndex][columnIndex] === matrix[rowIndex][columnIndex - 1]) {
+      columnIndex--;
     } else {
-      rowIndex++;
+      rowIndex--;
     }
   }
   return Subsequence;
@@ -43,5 +44,6 @@ export function LongestCommonSubsequence(a: string, b: string) {
 
 
 console.log(LongestCommonSubsequence('Saturday', 'Sunday'));
-// console.log(LongestCommonSubsequence('S', 'A'));
-// console.log(LongestCommonSubsequence('S', 'SA'));
+console.log(LongestCommonSubsequence('Sunday', 'Saturday'));
+console.log(LongestCommonSubsequence('S', 'A'));
+console.log(LongestCommonSubsequence('S', 'SA'));
