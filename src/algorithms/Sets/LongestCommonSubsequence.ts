@@ -1,3 +1,4 @@
+// subsequences are not required to occupy consecutive positions within the original sequences.
 // LCS[a, b](i, j) = 0 if min(i, j) = 0
 //                 = LCS(i - 1, j - 1) + 1 if a[i - 1] === b[j - 1]
 //                 = max(LCS(i - 1, j), LCS(i, j - 1))
@@ -47,3 +48,4 @@ console.log(LongestCommonSubsequence('Saturday', 'Sunday'));
 console.log(LongestCommonSubsequence('Sunday', 'Saturday'));
 console.log(LongestCommonSubsequence('S', 'A'));
 console.log(LongestCommonSubsequence('S', 'SA'));
+console.log(LongestCommonSubsequence("geek", "eke"))
