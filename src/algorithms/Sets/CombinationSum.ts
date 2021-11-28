@@ -1,3 +1,4 @@
+// Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
 export function CombinationSum(candidates: number[], target: number) {
   const candidatesArr: number[][] = [];
   for (let i = 0; i < candidates.length; i++) {
