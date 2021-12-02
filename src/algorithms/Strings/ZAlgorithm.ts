@@ -1,3 +1,4 @@
+// The Z-algorithm finds occurrences of a "word" W within a main "text string" T in linear time O(|W| + |T|).
 function ZAlgorithm(zString: string) {
   const zArray: number[] = Array(zString.length).fill(-1);
   let zBoxLeft = 0;

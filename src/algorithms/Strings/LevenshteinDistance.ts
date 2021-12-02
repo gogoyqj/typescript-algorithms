@@ -1,3 +1,4 @@
+// minimum edit distance between two sequences
 // lev[a,b](i, j) = max(i, j) if min(i, j) = 0
 //                = min( lev(i - 1, j) + 1, lev(i, j - 1) + 1, lev(i - 1, j - 1) + 1(ai != bj) )
 export function LevenshteinDistance(a: string, b: string) {
