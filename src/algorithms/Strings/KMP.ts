@@ -1,50 +1,45 @@
 // KMP
-export function KMP(text: string, word: string) {
+export function KMP(text: string, word: string): number {
   if (word.length === 0) return 0;
-  let wordIndex = 0;
   let textIndex = 0;
+  let wordIndex = 0;
 
-  const shitArr = getNext(word);
+  const next = getNext(word);
 
   while (textIndex < text.length) {
     if (text[textIndex] === word[wordIndex]) {
-      if (wordIndex === word.length - 1) {
-        return textIndex - wordIndex;
-      }
       textIndex++;
       wordIndex++;
+      if (wordIndex === word.length) return textIndex - word.length;
+    } else if (wordIndex > 0){
+      wordIndex = next[wordIndex - 1];
     } else {
-      const shit = shitArr[wordIndex];
-      if (shit < 0) {
-        textIndex++;
-        wordIndex = 0;
-      } else {
-        wordIndex = shit;
-      }
+      textIndex++;
+      wordIndex = 0;
     }
   }
-
+ 
   return -1;
 }
 
 export function getNext(word: string) {
-  const next: number[] = [-1];
-  let prevIndex = 0;
-  let nextIndex = 1;
-
-  while (nextIndex < word.length) {
-    if (word[prevIndex] === word[nextIndex]) {
-      next[nextIndex] = next[prevIndex];
-      nextIndex++;
-      prevIndex++;
-    } else if (prevIndex) {
-      next[nextIndex] = word[nextIndex - 1] === word[nextIndex] ? next[nextIndex -1] : nextIndex - prevIndex - 1;
-      nextIndex++;
+  const next = [0];
+  let start = 0;
+  let index = 1;
+  while (index < word.length) {
+    if (word[index] === word[start]) {
+      next[index] = start + 1;
+      start++;
+      index++;
+    } else if (start > 0) {
+      // ababxxxabac => 00120001230
+      start = next[start - 1];
     } else {
-      next[nextIndex] = next[prevIndex] + 1;
-      nextIndex++;
+      next[index] = 0;
+      index++;
     }
   }
+
   return next;
 }
 console.log(KMP('', '') === 0);
