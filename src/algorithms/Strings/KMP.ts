@@ -37,19 +37,25 @@ export function getNext(word: string) {
       next[nextIndex] = next[prevIndex];
       nextIndex++;
       prevIndex++;
+    } else if (prevIndex) {
+      next[nextIndex] = word[nextIndex - 1] === word[nextIndex] ? next[nextIndex -1] : nextIndex - prevIndex - 1;
+      nextIndex++;
     } else {
-      next[nextIndex] = prevIndex > 0 ? nextIndex - prevIndex - 1 : next[prevIndex] + 1;
+      next[nextIndex] = next[prevIndex] + 1;
       nextIndex++;
     }
   }
   return next;
 }
-console.log(KMP('', ''));
-console.log(KMP('a', ''));
-console.log(KMP('a', 'a'));
-console.log(KMP('abcbcglx', 'abca'));
-console.log(KMP('abcbcglx', 'bcgl'));
-console.log(KMP('abcxabcdabxabcdabcdabcy', 'abcdabcy'));
-console.log(KMP('abcxabcdabxabcdabcdabcy', 'abcdabca'));
-console.log(KMP('abcxabcdabxaabcdabcabcdabcdabcy', 'abcdabca'));
-console.log(KMP('abcxabcdabxaabaabaaaabcdabcdabcy', 'aabaabaaa'));
+console.log(KMP('', '') === 0);
+console.log(KMP('a', '') === 0);
+console.log(KMP('a', 'a') === 0);
+console.log(KMP('abcbcglx', 'abca') === -1);
+console.log(KMP('abcbcglx', 'bcgl') === 3);
+console.log(KMP('abcxabcdabxabcdabcdabcy', 'abcdabcy') === 15);
+console.log(KMP('abcxabcdabxabcdabcdabcy', 'abcdabca') === -1);
+console.log(KMP('abcxabcdabxaabcdabcabcdabcdabcy', 'abcdabca') === 12);
+console.log(KMP('abcxabcdabxaabaabaaaabcdabcdabcy', 'aabaabaaa') === 11);
+console.log(KMP('aababb', 'aabb') === -1)
+console.log(KMP('aabbabc', 'aabbab') === 0)
+
