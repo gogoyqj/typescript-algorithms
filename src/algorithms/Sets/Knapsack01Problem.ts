@@ -1,4 +1,5 @@
 // 0/1 背包问题
+// dp[i][j] = max(dp[i−1][j], dp[i−1][j−w[i]]+v[i]) // j >= w[i]
 function Knapsack01(w: number[], v: number[], W: number): number[] {
     const dp: number[] = [0];
     for (let i = 1; i <= w.length; i++) {
