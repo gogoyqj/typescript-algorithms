@@ -13,6 +13,11 @@ function Knapsack012(w: number[], v: number[], W: number): number[] {
 }
 console.log("size", Knapsack01([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 10));
 console.log("size", Knapsack01([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 1));
+console.log(
+  "size",
+  Knapsack012([0, 1, 2, 3, 4, 5, 6], [0, 2, 5, 4, 3, 2, 1], 10),
+  Knapsack01([1, 2, 3, 4, 5, 6], [2, 5, 4, 3, 2, 1], 10)
+);
 export {};
 
 // f[i] = Math.max(f[i - 1], f[i - weightTypes[i]] + valueTypes[i])
