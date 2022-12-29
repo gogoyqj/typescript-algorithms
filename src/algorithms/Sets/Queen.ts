@@ -26,7 +26,8 @@ export class Queen {
 }
 
 const Q = new Queen();
-Q.backTracking(0, 4);
-console.log(Q.solutions);
 Q.backTracking(0, 8);
+console.log(Q.solutions);
+Q.solutions = [];
+Q.backTracking(0, 4);
 console.log(Q.solutions);
