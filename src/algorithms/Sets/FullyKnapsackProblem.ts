@@ -34,22 +34,21 @@ function FullyKnapsackProblem2(
   valueTypes: number[],
   maxWeight: number
 ): number {
-  const cur = 0;
-  let curType = weightTypes[cur];
-  let curValue = valueTypes[cur];
+  let curType = weightTypes[0];
+  let curValue = valueTypes[0];
   if (curType === undefined || curType > maxWeight) {
     return 0;
   }
   return Math.max(
     curValue +
       FullyKnapsackProblem2(
-        weightTypes.slice(cur),
-        valueTypes.slice(cur),
+        weightTypes.slice(0),
+        valueTypes.slice(0),
         maxWeight - curType
       ),
     FullyKnapsackProblem2(
-      weightTypes.slice(cur + 1),
-      valueTypes.slice(cur + 1),
+      weightTypes.slice(1),
+      valueTypes.slice(1),
       maxWeight
     )
   );

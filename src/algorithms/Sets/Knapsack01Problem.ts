@@ -11,16 +11,16 @@ function Knapsack012(w: number[], v: number[], W: number): number[] {
   }
   return dp;
 }
-console.log("size", Knapsack01([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 10));
-console.log("size", Knapsack01([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 1));
+console.log("size", Knapsack012([0, 1, 2, 3, 4, 5, 6], [0, 6, 5, 4, 3, 2, 1], 10), Knapsack01([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 10));
+console.log("size", Knapsack012([0, 1, 2, 3, 4, 5, 6], [0, 6, 5, 4, 3, 2, 1], 1), Knapsack01([1, 2, 3, 4, 5, 6], [6, 5, 4, 3, 2, 1], 1));
 console.log(
   "size",
   Knapsack012([0, 1, 2, 3, 4, 5, 6], [0, 2, 5, 4, 3, 2, 1], 10),
   Knapsack01([1, 2, 3, 4, 5, 6], [2, 5, 4, 3, 2, 1], 10)
 );
-export {};
+export { };
 
-// f[i] = Math.max(f[i - 1], f[i - weightTypes[i]] + valueTypes[i])
+// f(i, j) = Math.max(f(i, j - 1), f(i - weightTypes[j], j - 1) + valueTypes[j])
 function Knapsack01(
   weightTypes: number[],
   valueTypes: number[],
@@ -33,11 +33,11 @@ function Knapsack01(
   }
   return Math.max(
     curValue +
-      Knapsack01(
-        weightTypes.slice(1),
-        valueTypes.slice(1),
-        maxWeight - curType
-      ),
-    Knapsack01(weightTypes.slice(1), valueTypes.slice(1), maxWeight - 1)
+    Knapsack01(
+      weightTypes.slice(1),
+      valueTypes.slice(1),
+      maxWeight - curType
+    ),
+    Knapsack01(weightTypes.slice(1), valueTypes.slice(1), maxWeight),
   );
 }
