@@ -28,7 +28,7 @@ console.log(
 );
 export {};
 
-// f(i) = max(f(i -1), f(i - weightTypes[i]) + valueTypes[i])
+// f(w, i) = max(f(w, i - 1), f(w - weightTypes[i], i) + valueTypes[i])
 function FullyKnapsackProblem2(
   weightTypes: number[],
   valueTypes: number[],
