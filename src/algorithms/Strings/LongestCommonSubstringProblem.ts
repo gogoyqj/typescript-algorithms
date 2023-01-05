@@ -1,5 +1,5 @@
 // The longest common substring problem is to find the longest string (or strings) that is a substring (or are substrings) of two or more strings.
-// LCS(n) = 
+// f(row, column) = a[row - 1] === b[column - 1] ? f(row - 1, column - 1) + 1 gt: 0;
 export function LongestCommonSubstringProblem(a: string, b: string) {
   const colunmLen = b.length + 1;
   const rowLen = a.length + 1;
@@ -35,5 +35,6 @@ export function LongestCommonSubstringProblem(a: string, b: string) {
 
 }
 
+console.log(LongestCommonSubstringProblem('ABC', 'ADE'));
 console.log(LongestCommonSubstringProblem('ABABC', 'BABCA'));
 console.log(LongestCommonSubstringProblem('ABABC', 'BABA'));
