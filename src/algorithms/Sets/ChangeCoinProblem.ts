@@ -31,7 +31,7 @@ console.log(
   ChangeCoinProblem2([1, 2, 5], 25)
 );
 
-// f(i) = Math.min(f(i), f(i - coinValues[i]) + 1)
+// f(v, c) = Math.min(f(v, c - 1), f(v - coinValues[c], c) + 1)
 function ChangeCoinProblem2(coinValues: number[], amount: number): number {
   let curValue = coinValues[0];
   if (curValue > amount) {
